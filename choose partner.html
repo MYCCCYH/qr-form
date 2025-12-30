@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>资料填写</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1558b0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>填写资料</h2>
+
+  <label>No. Kad Pengenalan</label>
+  <input type="text" id="ic" placeholder="例：900101011234" required>
+
+  <label>Nama</label>
+  <input type="text" id="nama" placeholder="请输入姓名" required>
+
+  <button onclick="hantar()">Hantar</button>
+</div>
+
+<script>
+function hantar() {
+  const ic = document.getElementById("ic").value.trim();
+  const nama = document.getElementById("nama").value.trim();
+
+  if (!ic || !nama) {
+    alert("请填写完整资料");
+    return;
+  }
+
+  // 这是你的 Google Form 的基础链接
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeiRLSlbAj-Mm8E9vj4sBY6LQU7oH2C-YBA-XdEI3Qaxpe-UA/viewform";
+
+  // 带入 entry 编号
+  const fullUrl = `${formUrl}?entry.1405446786=${encodeURIComponent(ic)}&entry.181281870=${encodeURIComponent(nama)}`;
+
+  // 跳转
+  window.location.href = fullUrl;
+}
+</script>
+
+</body>
+</html>
